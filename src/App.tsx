@@ -3,6 +3,7 @@ import { WorkflowProvider, useWorkflow } from './context/WorkflowContext';
 import { ProgressIndicator } from './components/ProgressIndicator';
 import { Page1Intro } from './pages/Page1Intro';
 import { Page2Setup } from './pages/Page2Setup';
+import { Page3Overview } from './pages/Page3Overview';
 import { Page3Ideation } from './pages/Page3Ideation';
 import { Page4Iteration } from './pages/Page4Iteration';
 import { Page5Refinement } from './pages/Page5Refinement';
@@ -22,18 +23,20 @@ const AppContent: React.FC = () => {
       case 2:
         return <Page2Setup />;
       case 3:
-        return <Page3Ideation />;
+        return <Page3Overview />;
       case 4:
-        return <Page4Iteration />;
+        return <Page3Ideation />;
       case 5:
-        return <Page5Refinement />;
+        return <Page4Iteration />;
       case 6:
-        return <Page6Accumulation />;
+        return <Page5Refinement />;
       case 7:
-        return <Page7WhyAccumulated />;
+        return <Page6Accumulation />;
       case 8:
-        return <Page8NextTime />;
+        return <Page7WhyAccumulated />;
       case 9:
+        return <Page8NextTime />;
+      case 10:
         return <PageCompletion />;
       default:
         return <Page1Intro />;

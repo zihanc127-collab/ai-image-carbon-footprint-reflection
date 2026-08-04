@@ -5,29 +5,31 @@ interface ProgressIndicatorProps {
 }
 
 export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({ currentPage }) => {
-  if (currentPage === 1 || currentPage === 9) {
+  if (currentPage === 1 || currentPage === 10) {
     return null; // Keep intro and completion visually clean
   }
 
-  // 8 active pages total
-  // Step 2: Page 2
-  // Step 3: Pages 3, 4, 5
-  // Step 4: Pages 6, 7, 8
+  // 8 active pages total (pages 2 to 9)
+  // Step 2: Page 2 (Setup), Page 3 (Overview)
+  // Step 3: Page 4 (Ideation), Page 5 (Iteration), Page 6 (Refinement)
+  // Step 4: Page 7 (Accumulation), Page 8 (Pattern Analysis), Page 9 (Future Intent)
   const getStepInfo = (page: number) => {
     switch (page) {
       case 2:
-        return { stepNumber: 2, stepTitle: 'Setup', pageInStep: '1 of 1' };
+        return { stepNumber: 2, stepTitle: 'Setup', pageInStep: '1 of 2' };
       case 3:
-        return { stepNumber: 3, stepTitle: 'Ideation', pageInStep: '1 of 3' };
+        return { stepNumber: 2, stepTitle: 'Overview', pageInStep: '2 of 2' };
       case 4:
-        return { stepNumber: 3, stepTitle: 'Iteration', pageInStep: '2 of 3' };
+        return { stepNumber: 3, stepTitle: 'Ideation', pageInStep: '1 of 3' };
       case 5:
-        return { stepNumber: 3, stepTitle: 'Refinement', pageInStep: '3 of 3' };
+        return { stepNumber: 3, stepTitle: 'Iteration', pageInStep: '2 of 3' };
       case 6:
-        return { stepNumber: 4, stepTitle: 'Accumulation', pageInStep: '1 of 3' };
+        return { stepNumber: 3, stepTitle: 'Refinement', pageInStep: '3 of 3' };
       case 7:
-        return { stepNumber: 4, stepTitle: 'Pattern Analysis', pageInStep: '2 of 3' };
+        return { stepNumber: 4, stepTitle: 'Accumulation', pageInStep: '1 of 3' };
       case 8:
+        return { stepNumber: 4, stepTitle: 'Pattern Analysis', pageInStep: '2 of 3' };
+      case 9:
         return { stepNumber: 4, stepTitle: 'Future Intent', pageInStep: '3 of 3' };
       default:
         return { stepNumber: 1, stepTitle: 'Intro', pageInStep: '' };
@@ -35,7 +37,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({ currentPag
   };
 
   const { stepNumber, stepTitle, pageInStep } = getStepInfo(currentPage);
-  const totalPages = 8; // Pages 1-8
+  const totalActivePages = 8; // Pages 2-9
 
   return (
     <div className="w-full max-w-4xl mx-auto mb-8 px-4">
@@ -46,14 +48,14 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({ currentPag
           <span>{stepTitle}</span>
         </div>
         <div className="text-neutral-400 font-mono">
-          Page {currentPage} of {totalPages} <span className="text-neutral-300">({pageInStep})</span>
+          Page {currentPage - 1} of {totalActivePages} <span className="text-neutral-300">({pageInStep})</span>
         </div>
       </div>
 
       {/* Subtle non-survey progress bar */}
       <div className="w-full h-1 bg-neutral-100 rounded-full overflow-hidden flex">
         {Array.from({ length: 8 }).map((_, idx) => {
-          const pageNum = idx + 1;
+          const pageNum = idx + 2;
           const isActive = pageNum <= currentPage;
           const isCurrent = pageNum === currentPage;
 

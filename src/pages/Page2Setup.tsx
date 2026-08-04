@@ -45,6 +45,9 @@ export const Page2Setup: React.FC = () => {
         <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
           Commercial AI image tools are often opaque about the specific model running behind their user interface. Let's establish your setup.
         </p>
+        <p className="text-sm sm:text-base text-neutral-600 leading-relaxed pt-1">
+          Think about a recent creative project or activity in which you used AI to generate images. Use that experience as the basis for the following questions.
+        </p>
       </div>
 
       {/* SECTION 1: TOOL SELECTION */}
@@ -156,6 +159,26 @@ export const Page2Setup: React.FC = () => {
           )}
         </div>
       )}
+
+      {/* SECTION 3: ABOUT THE ESTIMATE */}
+      <div className="bg-neutral-50 p-5 rounded-2xl border border-neutral-200/60 space-y-2 text-xs text-neutral-600">
+        <h3 className="font-semibold text-neutral-800 text-sm">
+          About the estimate
+        </h3>
+        <p className="leading-relaxed">
+          Energy estimates are derived from published benchmark data reported in <span className="italic">The Hidden Cost of an Image: Quantifying the Energy Consumption of AI Image Generation</span>.
+        </p>
+        <div>
+          <a
+            href="https://arxiv.org/abs/2506.17016"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-neutral-700 hover:text-neutral-900 underline font-medium transition-colors"
+          >
+            View data source ↗
+          </a>
+        </div>
+      </div>
 
       {/* Navigation Controls */}
       <NavigationControls

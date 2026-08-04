@@ -89,7 +89,7 @@ export const WorkflowProvider: React.FC<{ children: ReactNode }> = ({ children }
   }, [ideationCarbon, iterationCarbon, refinementCarbon]);
 
   const goToPage = (page: number) => {
-    if (page >= 1 && page <= 9) {
+    if (page >= 1 && page <= 10) {
       setCurrentPage(page);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
